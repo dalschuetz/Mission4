@@ -43,6 +43,7 @@ Console.WriteLine("Board Generated");
 
 
 //print initial board
+ttt.PrintBoard(Board);
 
 do
 {
@@ -55,6 +56,7 @@ do
     //if it is valid then fill in 
     tTools.FillBoard(Player1Guess, "X", Board);
     //print new board
+    ttt.PrintBoard(Board);
 
     //Ask player 2 for choice and update
     Console.WriteLine($"{Player2}: Please Enter a Space Name");
@@ -64,7 +66,8 @@ do
     SpacesGuessed += Player2Guess;
     tTools.FillBoard(Player2Guess, "O", Board);
     //print new board
-   
+    ttt.PrintBoard(Board);
+
 
     //Check if there's a winner
     ttt.ChooseWinner(Board, Player1, Player2);
