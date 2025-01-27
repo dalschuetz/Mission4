@@ -39,7 +39,7 @@ Thread.Sleep(500);
 Console.Write(".");
 Thread.Sleep(500);
 Console.Write(".");
-Console.WriteLine("Board Generated");
+Console.WriteLine(" Board Generated");
 
 
 //print initial board
@@ -57,6 +57,8 @@ do
     tTools.FillBoard(Player1Guess, "X", Board);
     //print new board
     ttt.PrintBoard(Board);
+    //Check if there's a winner
+    ttt.ChooseWinner(Board, Player1, Player2);
 
     //Ask player 2 for choice and update
     Console.WriteLine($"{Player2}: Please Enter a Space Name");
@@ -67,8 +69,6 @@ do
     tTools.FillBoard(Player2Guess, "O", Board);
     //print new board
     ttt.PrintBoard(Board);
-
-
     //Check if there's a winner
     ttt.ChooseWinner(Board, Player1, Player2);
     
@@ -78,71 +78,75 @@ do
 
 internal class tTools
 {
-    public static bool Validate(string guess, string SpacesGuessed)
-{
-    bool result = true;
-    
-    if (guess.Length != 2) //check for player 1
+    public static string Validate(string guess, string SpacesGuessed)
     {
-        Console.WriteLine("the guess need to be a letter. Try again.");
-        return false;
+        while (true) // Keep looping until a valid guess is entered
+        {
+            if (guess.Length != 2)
+            {
+                Console.WriteLine("The guess needs to be a letter and a number (e.g., A1). Try again.");
+            }
+            else if (!(guess == "A1" || guess == "A2" || guess == "A3" ||
+                       guess == "B1" || guess == "B2" || guess == "B3" ||
+                       guess == "C1" || guess == "C2" || guess == "C3"))
+            {
+                Console.WriteLine("The guess needs to be a valid space (A1-C3). Try again.");
+            }
+            else if (SpacesGuessed.Contains(guess))
+            {
+                Console.WriteLine("You have already guessed that space. Try again.");
+            }
+            else
+            {
+                return guess; // Valid guess, return it
+            }
+
+            // Prompt user for a new guess if the previous one was invalid
+            Console.Write("Enter a new guess: ");
+            guess = Console.ReadLine().ToUpper();
+        }
     }
-    else if (guess != "A1" || guess != "A2" || guess != "A3" || guess != "B1" || guess != "B2" || guess != "B3" ||
-             guess != "C1" || guess != "C2" || guess != "C3")
-    {
-        Console.WriteLine("the guess needs to be a valid space. Try again.");
-    }
-    else if (SpacesGuessed.Contains(guess)) // check to see if theletter has already been guessed
-    {
-        Console.WriteLine("you have already guessed that letter. Try again.");
-        result = false;
-    }
-    return result;
-}
+
 
     //add guess to the board
     public static void FillBoard(string guess, string symbol, string[,] Board)
     {
-        string[,] newBoard = (string[,])Board.Clone();
-
         if (guess == "A1")
         {
-            newBoard[0, 0] = symbol;
+            Board[0, 0] = symbol;
         }
         else if (guess == "A2")
         {
-            newBoard[0, 1] = symbol;
+            Board[0, 1] = symbol;
         }
         else if (guess == "A3")
         {
-            newBoard[0, 2] = symbol;
+            Board[0, 2] = symbol;
         }
         else if (guess == "B1")
         {
-            newBoard[1, 0] = symbol;
+            Board[1, 0] = symbol;
         }
         else if (guess == "B2")
         {
-            newBoard[1, 1] = symbol;
+            Board[1, 1] = symbol;
         }
         else if (guess == "B3")
         {
-            newBoard[1, 2] = symbol;
+            Board[1, 2] = symbol;
         }
         else if (guess == "C1")
         {
-            newBoard[2, 0] = symbol;
+            Board[2, 0] = symbol;
         }
         else if (guess == "C2")
         {
-            newBoard[2, 1] = symbol;
+            Board[2, 1] = symbol;
         }
         else if (guess == "C3")
         {
-            newBoard[2, 2] = symbol;
+            Board[2, 2] = symbol;
         }
-
-
-        Board = newBoard;
     }
+
 };
