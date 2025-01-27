@@ -1,4 +1,5 @@
-﻿using Mission4;
+﻿using System.Security.Cryptography.X509Certificates;
+using Mission4;
 
 TicTacTools ttt = new TicTacTools();
 
@@ -24,6 +25,7 @@ string Player1 = "";
 string Player2 = "";
 string Player1Guess = "";
 string Player2Guess = "";
+string SpacesGuessed = ""; 
 
 Console.WriteLine("Welcome to Tic-Tac-Toe");
 Console.WriteLine("Player 1: Please enter your name: ");
@@ -46,14 +48,48 @@ do
 {
     //Ask player 1 for choice and update
     Console.WriteLine($"{Player1}: Please Enter a Space Name");
-    Player1Guess = Console.ReadLine();
+    Player1Guess = Console.ReadLine().ToUpper();
+    //check if guess is valid
+    tTools.Validate(Player1Guess, SpacesGuessed);
+    SpacesGuessed += Player1Guess;
+    //if it is valid then fill in 
+    
     //print new board
 
     //Ask player 2 for choice and update
     Console.WriteLine($"{Player2}: Please Enter a Space Name");
-    Player2Guess = Console.ReadLine();
+    Player2Guess = Console.ReadLine().ToUpper();
+    //check if guess is valid
+    tTools.Validate(Player2Guess, SpacesGuessed);
+    SpacesGuessed += Player2Guess;
     //print new board
-
+    
     //Check if there's a winner
 
 } while (!gameOver);
+
+
+
+internal class tTools
+{
+    public static bool Validate(string guess, string SpacesGuessed)
+{
+    bool result = true;
+    
+    if (guess.Length != 2) //check for player 1
+    {
+        Console.WriteLine("the guess need to be a letter. Try again.");
+        return false;
+    }
+    else if (guess != "A1" || guess != "A2" || guess != "A3" || guess != "B1" || guess != "B2" || guess != "B3" ||
+             guess != "C1" || guess != "C2" || guess != "C3")
+    {
+        Console.WriteLine("the guess needs to be a valid space. Try again.");
+    }
+    else if (SpacesGuessed.Contains(guess)) // check to see if theletter has already been guessed
+    {
+        Console.WriteLine("you have already guessed that letter. Try again.");
+        result = false;
+    }
+    return result;
+}};
