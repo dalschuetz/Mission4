@@ -1,15 +1,10 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 using Mission4;
 
+//Import new instance of tictactools
 TicTacTools ttt = new TicTacTools();
 
-/*Welcome User to the Game
- * Create board array
- * Ask player for choice and update array
- * Print board
- * Call choose winner method and notify when a win has occured
- * */
-
+//initialize all our variables
 string[,] Board = new string[3,3];
 Board[0, 0] = "A1";
 Board[0, 1] = "A2";
@@ -28,6 +23,7 @@ string Player2Guess = "";
 string SpacesGuessed = "";
 int NumTurns = 0;
 
+//Welcome the user and start the game
 Console.WriteLine("Welcome to Tic-Tac-Toe");
 Console.WriteLine("Player 1: Please enter your name: ");
 Player1 = Console.ReadLine();
@@ -60,7 +56,7 @@ do
     ttt.PrintBoard(Board);
     //Check if there's a winner
     gameOver = ttt.ChooseWinner(Board, Player1, Player2);
-
+    //iterates number of turns to check for a tie
     NumTurns++;
     if (NumTurns == 9)
     {
@@ -81,6 +77,7 @@ do
         ttt.PrintBoard(Board);
         //Check if there's a winner
         gameOver = ttt.ChooseWinner(Board, Player1, Player2);
+        //itereates number of turns to check for a tie
         NumTurns++;
         if (NumTurns == 9)
         {
@@ -94,30 +91,35 @@ do
 
 internal class tTools
 {
+    //make sure the space is valid
     public static string Validate(string guess, string SpacesGuessed)
     {
         while (true) // Keep looping until a valid guess is entered
         {
+            //check if is 2 characters
             if (guess.Length != 2)
             {
-                Console.WriteLine("The guess needs to be a letter and a number (e.g., A1). Try again.");
+                Console.WriteLine("The guess needs to be a letter and a number (example: A1). Try again.");
             }
+            //check if it is one of the options of spaces
             else if (!(guess == "A1" || guess == "A2" || guess == "A3" ||
                        guess == "B1" || guess == "B2" || guess == "B3" ||
                        guess == "C1" || guess == "C2" || guess == "C3"))
             {
                 Console.WriteLine("The guess needs to be a valid space (A1-C3). Try again.");
             }
+            //check if guess has been guessed before
             else if (SpacesGuessed.Contains(guess))
             {
                 Console.WriteLine("You have already guessed that space. Try again.");
             }
+            //returns the valid guess
             else
             {
-                return guess; // Valid guess, return it
+                return guess;
             }
 
-            // Prompt user for a new guess if the previous one was invalid
+            // Prompt user for a new guess if was invalid
             Console.Write("Enter a new guess: ");
             guess = Console.ReadLine().ToUpper();
         }

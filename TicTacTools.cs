@@ -8,6 +8,7 @@ namespace Mission4
 {
     internal class TicTacTools
     {
+        //prints board
         public void PrintBoard(string[,] board)
         {
             for (int i = 0; i < 3; i++)
