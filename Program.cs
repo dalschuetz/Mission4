@@ -67,7 +67,7 @@ do
    
 
     //Check if there's a winner
-    Console.WriteLine(TicTacTools.ChooseWinner(Board, Player1, Player2));
+    ttt.ChooseWinner(Board, Player1, Player2);
     
 } while (!gameOver);
 
