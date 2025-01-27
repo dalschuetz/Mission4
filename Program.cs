@@ -67,7 +67,8 @@ do
    
 
     //Check if there's a winner
-
+    Console.WriteLine(TicTacTools.ChooseWinner(Board));
+    
 } while (!gameOver);
 
 
