@@ -14,9 +14,12 @@ namespace Mission4
 {
     internal class TicTacTools
     {
-        public void PrintBoard()
+        public void PrintBoard(string[,] board)
         {
-
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine(board[i, 0] + " + " + board[i, 1] + " + " + board[i, 2]);
+            }
         }
 
        // method to find a winner if there is one.
