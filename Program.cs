@@ -20,17 +20,38 @@ Board[2, 0] = "C1";
 Board[2, 1] = "C2";
 Board[2, 2] = "C3";
 bool gameOver = false;
+string Player1 = "";
+string Player2 = "";
+string Player1Guess = "";
+string Player2Guess = "";
 
-//Print initial board
+Console.WriteLine("Welcome to Tic-Tac-Toe");
+Console.WriteLine("Player 1: Please enter your name: ");
+Player1 = Console.ReadLine();
+Console.WriteLine("Player 2: Please enter your name: ");
+Player2 = Console.ReadLine();
+Console.Write("Generating Board");
+Thread.Sleep(500);
+Console.Write(".");
+Thread.Sleep(500);
+Console.Write(".");
+Thread.Sleep(500);
+Console.Write(".");
+Console.WriteLine("Board Generated");
+
+
+//print initial board
 
 do
-{ 
+{
     //Ask player 1 for choice and update
-
+    Console.WriteLine($"{Player1}: Please Enter a Space Name");
+    Player1Guess = Console.ReadLine();
     //print new board
 
     //Ask player 2 for choice and update
-
+    Console.WriteLine($"{Player2}: Please Enter a Space Name");
+    Player2Guess = Console.ReadLine();
     //print new board
 
     //Check if there's a winner
