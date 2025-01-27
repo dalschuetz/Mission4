@@ -25,7 +25,8 @@ string Player1 = "";
 string Player2 = "";
 string Player1Guess = "";
 string Player2Guess = "";
-string SpacesGuessed = ""; 
+string SpacesGuessed = "";
+int NumTurns = 0;
 
 Console.WriteLine("Welcome to Tic-Tac-Toe");
 Console.WriteLine("Player 1: Please enter your name: ");
@@ -60,6 +61,13 @@ do
     //Check if there's a winner
     gameOver = ttt.ChooseWinner(Board, Player1, Player2);
 
+    NumTurns++;
+    if (NumTurns == 9)
+    {
+        gameOver = true;
+        Console.WriteLine("You both lose...");
+    }
+
     if (!gameOver)
     {
         //Ask player 2 for choice and update
@@ -73,8 +81,13 @@ do
         ttt.PrintBoard(Board);
         //Check if there's a winner
         gameOver = ttt.ChooseWinner(Board, Player1, Player2);
+        NumTurns++;
+        if (NumTurns == 9)
+        {
+            gameOver = true;
+            Console.WriteLine("You both lose...");
+        }
     }
-    
 } while (!gameOver);
 
 
