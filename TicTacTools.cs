@@ -26,11 +26,11 @@ namespace Mission4
                 {
                     if (board[i,0] == "X")
                     {
-                        Console.WriteLine(player1 + "is the winner");
+                        Console.WriteLine(player1 + " is the winner");
                     }
                     else
                     {
-                        Console.WriteLine(player2 + "is the winner");
+                        Console.WriteLine(player2 + " is the winner");
                     } 
                 }
             }
@@ -41,11 +41,11 @@ namespace Mission4
                 {
                     if (board[0, i] == "X")
                     {
-                        Console.WriteLine(player1 + "is the winner");
+                        Console.WriteLine(player1 + " is the winner");
                     }
                     else
                     {
-                        Console.WriteLine(player2 + "is the winner");
+                        Console.WriteLine(player2 + " is the winner");
                     }
                     return true; 
                 }
@@ -55,11 +55,11 @@ namespace Mission4
             {
                 if (board[0, 0] == "X")
                 {
-                    Console.WriteLine(player1 + "is the winner");
+                    Console.WriteLine(player1 + " is the winner");
                 }
                 else
                 {
-                    Console.WriteLine(player2 + "is the winner");
+                    Console.WriteLine(player2 + " is the winner");
                 }
                 return true; 
             }
@@ -68,11 +68,11 @@ namespace Mission4
             {
                 if (board[0,2] == "X")
                 {
-                    Console.WriteLine(player1 + "is the winner");
+                    Console.WriteLine(player1 + " is the winner");
                 }
                 else
                 {
-                    Console.WriteLine(player2 + "is the winner");
+                    Console.WriteLine(player2 + " is the winner");
                 }
                 return true; 
             }
