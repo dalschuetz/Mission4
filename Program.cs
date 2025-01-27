@@ -53,7 +53,7 @@ do
     tTools.Validate(Player1Guess, SpacesGuessed);
     SpacesGuessed += Player1Guess;
     //if it is valid then fill in 
-    
+    tTools.FillBoard(Player1Guess, "X", Board);
     //print new board
 
     //Ask player 2 for choice and update
@@ -62,8 +62,10 @@ do
     //check if guess is valid
     tTools.Validate(Player2Guess, SpacesGuessed);
     SpacesGuessed += Player2Guess;
+    tTools.FillBoard(Player2Guess, "O", Board);
     //print new board
-    
+   
+
     //Check if there's a winner
 
 } while (!gameOver);
@@ -92,4 +94,51 @@ internal class tTools
         result = false;
     }
     return result;
-}};
+}
+
+    //add guess to the board
+    public static void FillBoard(string guess, string symbol, string[,] Board)
+    {
+        string[,] newBoard = (string[,])Board.Clone();
+
+        if (guess == "A1")
+        {
+            newBoard[0, 0] = symbol;
+        }
+        else if (guess == "A2")
+        {
+            newBoard[0, 1] = symbol;
+        }
+        else if (guess == "A3")
+        {
+            newBoard[0, 2] = symbol;
+        }
+        else if (guess == "B1")
+        {
+            newBoard[1, 0] = symbol;
+        }
+        else if (guess == "B2")
+        {
+            newBoard[1, 1] = symbol;
+        }
+        else if (guess == "B3")
+        {
+            newBoard[1, 2] = symbol;
+        }
+        else if (guess == "C1")
+        {
+            newBoard[2, 0] = symbol;
+        }
+        else if (guess == "C2")
+        {
+            newBoard[2, 1] = symbol;
+        }
+        else if (guess == "C3")
+        {
+            newBoard[2, 2] = symbol;
+        }
+
+
+        Board = newBoard;
+    }
+};
