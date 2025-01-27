@@ -51,26 +51,29 @@ do
     Console.WriteLine($"{Player1}: Please Enter a Space Name");
     Player1Guess = Console.ReadLine().ToUpper();
     //check if guess is valid
-    tTools.Validate(Player1Guess, SpacesGuessed);
+    Player1Guess = tTools.Validate(Player1Guess, SpacesGuessed);
     SpacesGuessed += Player1Guess;
     //if it is valid then fill in 
     tTools.FillBoard(Player1Guess, "X", Board);
     //print new board
     ttt.PrintBoard(Board);
     //Check if there's a winner
-    ttt.ChooseWinner(Board, Player1, Player2);
+    gameOver = ttt.ChooseWinner(Board, Player1, Player2);
 
-    //Ask player 2 for choice and update
-    Console.WriteLine($"{Player2}: Please Enter a Space Name");
-    Player2Guess = Console.ReadLine().ToUpper();
-    //check if guess is valid
-    tTools.Validate(Player2Guess, SpacesGuessed);
-    SpacesGuessed += Player2Guess;
-    tTools.FillBoard(Player2Guess, "O", Board);
-    //print new board
-    ttt.PrintBoard(Board);
-    //Check if there's a winner
-    ttt.ChooseWinner(Board, Player1, Player2);
+    if (!gameOver)
+    {
+        //Ask player 2 for choice and update
+        Console.WriteLine($"{Player2}: Please Enter a Space Name");
+        Player2Guess = Console.ReadLine().ToUpper();
+        //check if guess is valid
+        Player2Guess = tTools.Validate(Player2Guess, SpacesGuessed);
+        SpacesGuessed += Player2Guess;
+        tTools.FillBoard(Player2Guess, "O", Board);
+        //print new board
+        ttt.PrintBoard(Board);
+        //Check if there's a winner
+        gameOver = ttt.ChooseWinner(Board, Player1, Player2);
+    }
     
 } while (!gameOver);
 
