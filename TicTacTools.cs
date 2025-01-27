@@ -12,7 +12,11 @@ namespace Mission4
         {
             for (int i = 0; i < 3; i++)
             {
-                Console.WriteLine(board[i, 0] + " + " + board[i, 1] + " + " + board[i, 2]);
+                Console.WriteLine(board[i, 0] + " | " + board[i, 1] + " | " + board[i, 2]);
+                if (i < 2)
+                {
+                    Console.WriteLine("-------------");
+                }
             }
         }
         // method to find a winner if there is one.
