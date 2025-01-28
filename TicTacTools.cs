@@ -36,7 +36,8 @@ namespace Mission4
                     else
                     {
                         Console.WriteLine(player2 + " is the winner");
-                    } 
+                    }
+                    return true;
                 }
             }
             //checking columns for winner
